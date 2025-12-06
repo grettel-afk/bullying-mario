@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeSchool - Contacto</title>
+
+<style>
+/* ----- ESTILOS GENERALES ----- */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #ffffff;
+    color: white;
+}
+
+/* ------- NAVBAR ------- */
+.navbar {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    background: rgba(11, 6, 61, 0.75);
+    backdrop-filter: blur(6px);
+    padding: 15px 30px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 40px;
+    align-items: center;
+    z-index: 1000;
+    border-bottom: 2px solid rgba(11, 6, 61, 0.75);
+}
+
+.navbar .logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: royalblue;
+    text-shadow: 0 0 10px royalblue;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 35px;
+    margin-left: 40px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    transition: 0.3s;
+}
+
+.nav-links li a:hover {
+    color: royalblue;
+    text-shadow: 0 0 10px royalblue;
+}
+
+/* ------- HEADER ------- */
+header {
+    position: relative;
+    height: 220px;
+    margin-top: 120px;
+    background: linear-gradient(to right, #1b3cff, #6fa7ff);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 25px;
+    color: white;
+    box-shadow: 0 0 30px rgba(65,105,255,0.7) inset;
+}
+
+header h1 {
+    font-size: 42px;
+    text-shadow: 0 0 12px rgba(255,255,255,0.7);
+}
+
+/* ------- CONTENEDOR PRINCIPAL ------- */
+.contacto-contenedor {
+    width: 90%;
+    max-width: 1100px;
+    background: #26315E;
+    border-radius: 18px;
+    margin: 50px auto;
+    padding: 40px;
+    color: black;
+    box-shadow: 0 0 25px #26315E;
+}
+
+/* ------- FORMULARIO ------- */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input, textarea {
+    padding: 14px;
+    border-radius: 10px;
+    border: 2px solid royalblue;
+    font-size: 16px;
+    width: 100%;
+}
+
+textarea {
+    height: 150px;
+    resize: none;
+}
+
+button {
+    background: royalblue;
+    border: none;
+    padding: 15px;
+    font-size: 18px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+    transition: .3s;
+}
+
+button:hover {
+    background: #1736d6;
+}
+
+/* ------- INFO LATERAL ------- */
+.info-contacto {
+    margin-top: 30px;
+    background: #3c58b4;
+    border-left: 5px solid royalblue;
+    padding: 20px;
+    border-radius: 10px;
+}
+</style>
+
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="navbar">
+    <div class="logo">SafeSchool</div>
+    <ul class="nav-links">
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="alerta.html">Alerta</a></li>
+        <li><a href="informacion sobre el bulling.html">informacion</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+    </ul>
+</nav>
+
+<!-- HEADER -->
+<header>
+    <h1>Contacto</h1>
+</header>
+
+<!-- CONTENIDO -->
+<div class="contacto-contenedor">
+
+    <h2>Envíanos un mensaje</h2>
+    <p>Si necesitas ayuda, tienes dudas o deseas reportar una situación, puedes escribirnos.</p>
+
+    <form>
+        <input type="text" placeholder="Tu nombre" required>
+        <input type="email" placeholder="Correo electrónico" required>
+        <input type="text" placeholder="Asunto" required>
+        <textarea placeholder="Escribe tu mensaje aquí..." required></textarea>
+
+        <button type="submit">Enviar mensaje</button>
+    </form>
+
+    <div class="info-contacto">
+        <h3>Información de contacto</h3>
+        <p><strong>📧 Correo:</strong> safeschool@gmail.com</p>
+        <p><strong>📞 Teléfono:</strong> +52 55 1234 5678</p>
+        <p><strong>📍 Ubicación:</strong> Ciudad de México, México</p>
+    </div>
+
+</div>
+
+</body>
+</html>

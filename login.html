@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafeSchool - Login</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial;
+    }
+
+    .box {
+      background: rgba(255,255,255,0.07);
+      padding: 35px;
+      border-radius: 15px;
+      width: 260px;
+      text-align: center;
+      border: 2px solid #0059ff;
+      box-shadow: 0 0 15px #0059ff;
+    }
+
+    .input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+    }
+
+    .btn {
+      width: 100%;
+      padding: 12px;
+      background: #003049;
+      color: white;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h2>Iniciar sesión</h2>
+
+    <input class="input" type="email" placeholder="Correo">
+    <input class="input" type="password" placeholder="Contraseña">
+
+    <button class="btn" onclick="window.location.href='index.html'">Entrar</button>
+
+    <p style="margin-top:10px;">
+      ¿No tienes cuenta?
+      <a style="color:#4da6ff; cursor:pointer;" onclick="window.location.href='index.html'">Regístrate</a>
+    </p>
+  </div>
+
+</body>
+</html>
