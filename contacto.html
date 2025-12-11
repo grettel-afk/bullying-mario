@@ -19,7 +19,7 @@ body {
     width: 100%;
     position: fixed;
     top: 0;
-    background: rgba(11, 6, 61, 0.75);
+    background: #26315E;
     backdrop-filter: blur(6px);
     padding: 15px 30px;
     display: flex;
@@ -61,14 +61,14 @@ header {
     position: relative;
     height: 220px;
     margin-top: 120px;
-    background: linear-gradient(to right, #1b3cff, #6fa7ff);
+    background: linear-gradient(to right, #26315E, #26315E);
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     padding: 25px;
     color: white;
-    box-shadow: 0 0 30px rgba(65,105,255,0.7) inset;
+    
 }
 
 header h1 {
@@ -80,7 +80,7 @@ header h1 {
 .contacto-contenedor {
     width: 90%;
     max-width: 1100px;
-    background: #26315E;
+    background: #ffffff;
     border-radius: 18px;
     margin: 50px auto;
     padding: 40px;
@@ -139,11 +139,15 @@ button:hover {
 <!-- NAV -->
 <nav class="navbar">
     <div class="logo">SafeSchool</div>
+
     <ul class="nav-links">
-        <li><a href="index.html">Inicio</a></li>
+          <li><a href="index.html" class="btn-login">Iniciar sesión</a></li>
+         <li><a href="register.html" class="btn-login">Registrarse</a></li> 
+        <li><a href="login.html">Inicio</a></li>
         <li><a href="alerta.html">Alerta</a></li>
-        <li><a href="informacion sobre el bulling.html">informacion</a></li>
+        <li><a href="informacion sobre el bulling.html">Información</a></li>
         <li><a href="contacto.html">Contacto</a></li>
+       
     </ul>
 </nav>
 
