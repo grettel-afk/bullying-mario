@@ -92,13 +92,14 @@ h1 {
   border-radius: 5px;
 }
 
+/* Colores del bullying */
 .color-verbal { background: #F7C65A; }
 .color-fisico { background: #E65555; }
 .color-social { background: #6AAAE6; }
 .color-cyber  { background: #A55AE6; }
 .color-grave  { background: #B71C1C; }
 
-/* BOTÓN CIRCULAR */
+/* BOTÓN ALERTA */
 .boton-alerta {
     width: 150px;
     height: 150px;
@@ -109,6 +110,7 @@ h1 {
     font-size: 22px;
     font-weight: bold;
     cursor: pointer;
+    
     display: block;
     margin: 40px auto;
     transition: .3s;
@@ -120,7 +122,7 @@ h1 {
     box-shadow: 0 0 50px rgb(23, 13, 133);
 }
 
-/* FONDO DEL MODAL */
+/* FONDO MODAL */
 .modal-fondo {
     display: none;
     position: fixed;
@@ -135,41 +137,36 @@ h1 {
     z-index: 9999;
 }
 
-/* CUADRO LED DEL FORMULARIO */
+/* FORMULARIO MÁS ANGOSTO */
 .modal-contenido {
     background: #38457b;
-    padding: 25px;
+    padding: 20px;
     width: 90%;
-    max-width: 420px;
-    border-radius: 20px;
-    box-shadow: 0 0 25px #4d7bff, inset 0 0 30px #4d7bff;
+    max-width: 300px;
+    border-radius: 18px;
+    box-shadow: 0 0 20px #4d7bff, inset 0 0 20px #4d7bff;
     color: #eff1f6;
+    transform: scale(0.95);
 }
 
 .modal-contenido h2 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     text-shadow: 0 0 10px #4d7bff;
 }
 
-label {
-    font-size: 16px;
-    display: block;
-    margin-top: 12px;
-}
-
+/* INPUTS MÁS COMPACTOS */
 input, textarea, select {
     width: 100%;
-    padding: 10px;
-    margin-top: 7px;
-    border-radius: 10px;
+    padding: 8px;
+    margin-top: 6px;
+    border-radius: 8px;
     border: none;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 textarea {
-    height: 90px;
-    resize: none;
+    height: 70px;
 }
 
 .btn-enviar {
@@ -189,21 +186,20 @@ textarea {
     background: rgb(90,130,255);
 }
 
-/* BOTÓN CERRAR */
 .btn-cerrar {
-    width: 100%;
-    padding: 10px;
+    margin-top: 12px;
     background: #ff4d4d;
-    color: white;
-    font-size: 17px;
+    padding: 10px;
+    width: 100%;
     border: none;
-    border-radius: 10px;
-    margin-top: 15px;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
     cursor: pointer;
 }
 
 .btn-cerrar:hover {
-    background: #e60000;
+    background: #d63b3b;
 }
 </style>
 
@@ -216,8 +212,8 @@ textarea {
 
     <ul class="nav-links">
         <li><a href="index.html">Inicio</a></li>
-        <li><a href="alerta.html" class="activo">Alerta</a></li>
-        <li><a href="informacion sobre el bulling.html">Información</a></li>
+        <li><a href="alerta.html">Alerta</a></li>
+        <li><a href="informacion sobre el bulling.html">informacion</a></li>
         <li><a href="contacto.html">Contacto</a></li>
     </ul>
 </nav>
@@ -225,7 +221,7 @@ textarea {
 <!-- TÍTULO -->
 <h1>Alerta de Bullying</h1>
 
-<!-- TABLA -->
+<!-- TABLA DE COLORES -->
 <table class="tabla-colores">
   <tr>
     <th>Tipo</th>
@@ -264,6 +260,7 @@ textarea {
   </tr>
 </table>
 
+
 <!-- BOTÓN CIRCULAR -->
 <button class="boton-alerta" onclick="abrirModal()">ALERTA</button>
 
@@ -272,41 +269,41 @@ textarea {
     <div class="modal-contenido">
         <h2>Reporte de Bullying</h2>
 
-        <form action="https://formspree.io/f/xrbnlzko" method="POST">
+<form action="https://formspree.io/f/xrbnlzko" method="POST">
 
-            <label>Selecciona el correo de la maestra:</label>
-            <select name="correo" required>
-                <option value="">-- Selecciona una maestra --</option>
-                <option value="gretteltorres.alp@cbtis258.edu.mx">Profa. Grettel Torres</option>
-                <option value="adriana.lopez@cbtis258.edu.mx">Profa. Adriana López</option>
-                <option value="karina.mendez@cbtis258.edu.mx">Profa. Karina Méndez</option>
-                <option value="marisol.reyes@cbtis258.edu.mx">Profa. Marisol Reyes</option>
-                <option value="veronica.garcia@cbtis258.edu.mx">Profa. Verónica García</option>
-            </select>
+  <label>Selecciona una maestra:</label>
+  <select name="correo_destino" required>
+    <option value="">-- Selecciona una maestra --</option>
+    <option value="gretteltorres.alp@cbtis258.edu.mx">Grettel Torres</option>
+    <option value="maestra1@cbtis258.edu.mx">María López</option>
+    <option value="maestra2@cbtis258.edu.mx">Liliana Ruiz</option>
+    <option value="maestra3@cbtis258.edu.mx">Maribel Sánchez</option>
+    <option value="maestra4@cbtis258.edu.mx">Claudia Martínez</option>
+    <option value="maestra5@cbtis258.edu.mx">Patricia Gómez</option>
+  </select>
 
-            <label>Carrera:</label>
-            <input type="text" name="carrera" placeholder="Escribe tu carrera" required>
+  <label>Carrera:</label>
+  <input type="text" name="carrera" required>
 
-            <label>Grupo:</label>
-            <input type="text" name="grupo" placeholder="Escribe tu grupo" required>
+  <label>Grupo:</label>
+  <input type="text" name="grupo" required>
 
-            <label>Aula:</label>
-            <input type="text" name="aula" placeholder="Escribe tu aula" required>
+  <label>Aula:</label>
+  <input type="text" name="aula" required>
 
-            <label>Tu nombre (opcional):</label>
-            <input type="text" name="nombre" placeholder="Tu nombre">
+  <label>Tu nombre (opcional):</label>
+  <input type="text" name="nombre">
 
-            <label>Persona que te molesta:</label>
-            <input type="text" name="agresor" placeholder="Nombre de la persona" required>
+  <label>Persona que te molesta:</label>
+  <input type="text" name="agresor" required>
 
-            <label>Mensaje (opcional):</label>
-            <textarea name="mensaje" placeholder="Describe lo que pasó"></textarea>
+  <label>Mensaje (opcional):</label>
+  <textarea name="mensaje"></textarea>
 
-            <button type="submit" class="btn-enviar">Enviar</button>
-        </form>
+  <button class="btn-enviar" type="submit">Enviar</button>
+</form>
 
-        <!-- BOTÓN CERRAR -->
-        <button class="btn-cerrar" onclick="cerrarModal()">Cerrar</button>
+<button class="btn-cerrar" onclick="cerrarModal()">Cerrar</button>
 
     </div>
 </div>
