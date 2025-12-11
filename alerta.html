@@ -122,7 +122,6 @@ h1 {
     border-radius: 20px;
     box-shadow: 0 0 25px #4d7bff, inset 0 0 30px #4d7bff;
     color: #eff1f6;
-  
 }
 
 .modal-contenido h2 {
@@ -288,8 +287,15 @@ input {
 
       <form action="https://formspree.io/f/xrbnlzko" method="POST">
 
-  <label>Tu correo:</label>
-  <input type="email" name="correo" placeholder="Tu correo electrónico" required>
+  <label>Selecciona el correo de la maestra:</label>
+<select name="correo" required>
+  <option value="">-- Selecciona una maestra --</option>
+  <option value="gretteltorres.alp@cbtis258.edu.mx">Profa. Grettel Torres</option>
+  <option value="maestra1@cbtis258.edu.mx">Profa. Adriana López</option>
+  <option value="maestra2@cbtis258.edu.mx">Profa. Karina Méndez</option>
+  <option value="maestra3@cbtis258.edu.mx">Profa. Marisol Reyes</option>
+  <option value="maestra4@cbtis258.edu.mx">Profa. Verónica García</option>
+</select>
 
   <label>Carrera:</label>
   <input type="text" name="carrera" placeholder="Escribe tu carrera" required>
