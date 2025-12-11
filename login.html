@@ -33,6 +33,7 @@
       margin: 10px 0;
       border-radius: 8px;
       border: none;
+      outline: none;
     }
 
     .btn {
@@ -44,6 +45,12 @@
       border: none;
       cursor: pointer;
     }
+
+    .error {
+      color: #ff4d4d;
+      font-size: 0.9em;
+      margin-top: 5px;
+    }
   </style>
 </head>
 
@@ -52,16 +59,75 @@
   <div class="box">
     <h2>Iniciar sesión</h2>
 
-    <input class="input" type="email" placeholder="Correo">
-    <input class="input" type="password" placeholder="Contraseña">
+    <input id="email" class="input" type="email" placeholder="Correo">
+    <input id="password" class="input" type="password" placeholder="Contraseña">
 
-    <button class="btn" onclick="window.location.href='index.html'">Entrar</button>
+    <button class="btn" onclick="login()">Entrar</button>
+    <p id="msg" class="error"></p>
 
     <p style="margin-top:10px;">
       ¿No tienes cuenta?
-      <a style="color:#4da6ff; cursor:pointer;" onclick="window.location.href='index.html'">Regístrate</a>
+      <a style="color:#4da6ff; cursor:pointer;" onclick="window.location.href='register.html'">Regístrate</a>
     </p>
   </div>
+
+<script>
+  let intentos = 0;
+
+  function sanitize(text) {
+    return text.replace(/[<>"'\/]/g, "");
+  }
+
+  function login() {
+    const email = sanitize(document.getElementById("email").value.trim());
+    const password = sanitize(document.getElementById("password").value.trim());
+    const msg = document.getElementById("msg");
+
+    msg.innerText = "";
+
+    if (intentos >= 3) {
+      msg.innerText = "Demasiados intentos. Intenta más tarde.";
+      return;
+    }
+
+    // Validación básico de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      msg.innerText = "Correo inválido.";
+      intentos++;
+      return;
+    }
+
+    // Validación básico de password
+    const passRegex = /^(?=.*[A-Z])(?=.*[0-9]).{6,}$/;
+    if (!passRegex.test(password)) {
+      msg.innerText = "Contraseña incorrecta.";
+      intentos++;
+      return;
+    }
+
+    // Obtener usuario guardado
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    if (!user) {
+      msg.innerText = "No hay ninguna cuenta registrada.";
+      return;
+    }
+
+    if (email !== user.email || password !== user.password) {
+      msg.innerText = "Datos incorrectos.";
+      intentos++;
+      return;
+    }
+
+    msg.style.color = "#00ff88";
+    msg.innerText = "Entrando...";
+
+    setTimeout(() => {
+      window.location.href = "index.html";
+    }, 800);
+  }
+</script>
 
 </body>
 </html>
