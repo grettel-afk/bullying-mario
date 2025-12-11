@@ -3,107 +3,118 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Registro</title>
+  <title>SafeSchool - Registro</title>
 
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
     body {
-      background: #0d0f1a;
+      margin: 0;
+      background: #000;
+      color: white;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
-      color: white;
+      font-family: Arial;
     }
 
-    .container {
-      background: rgba(255,255,255,0.06);
-      padding: 40px;
-      width: 350px;
+    .box {
+      background: rgba(255,255,255,0.07);
+      padding: 35px;
       border-radius: 15px;
-      backdrop-filter: blur(6px);
-      box-shadow: 0 0 20px rgba(255,255,255,0.08);
-    }
-
-    h2 {
+      width: 260px;
       text-align: center;
-      margin-bottom: 20px;
+      border: 2px solid #00ff99;
+      box-shadow: 0 0 15px #00ff99;
     }
 
-    input {
+    .input {
       width: 100%;
       padding: 12px;
       margin: 10px 0;
-      border: none;
       border-radius: 8px;
-      background: rgba(255,255,255,0.15);
-      color: white;
-      font-size: 15px;
+      border: none;
       outline: none;
     }
 
-    input::placeholder {
-      color: #cfcfcf;
-    }
-
-    button {
+    .btn {
       width: 100%;
       padding: 12px;
-      margin-top: 15px;
-      background: #4f46e5;
+      background: #006637;
       color: white;
-      border: none;
       border-radius: 8px;
+      border: none;
       cursor: pointer;
-      font-size: 16px;
-      transition: 0.3s;
     }
 
-    button:hover {
-      background: #3b36c8;
-    }
-
-    .login-link {
-      margin-top: 10px;
-      text-align: center;
-      font-size: 14px;
-    }
-
-    .login-link a {
-      color: #7b7bff;
-      text-decoration: none;
-    }
-
-    .login-link a:hover {
-      text-decoration: underline;
+    .error {
+      color: #ff4d4d;
+      font-size: 0.9em;
+      margin-top: 5px;
     }
   </style>
 </head>
+
 <body>
 
-  <div class="container">
-    <h2>Crear Cuenta</h2>
+  <div class="box">
+    <h2>Crear cuenta</h2>
 
-    <form action="#" method="POST">
-      <input type="text" name="nombre" placeholder="Nombre completo" required>
-      <input type="email" name="correo" placeholder="Correo electrónico" required>
-      <input type="password" name="password" placeholder="Contraseña" required>
-      <input type="password" name="confirmar" placeholder="Confirmar contraseña" required>
+    <input id="email" class="input" type="email" placeholder="Correo">
+    <input id="password" class="input" type="password" placeholder="Contraseña (min 6, mayúscula, número)">
+    <input id="password2" class="input" type="password" placeholder="Repite tu contraseña">
 
-      <button type="submit">Registrarse</button>
-    </form>
+    <button class="btn" onclick="register()">Registrar</button>
+    <p id="msg" class="error"></p>
 
-    <div class="login-link">
-      ¿Ya tienes cuenta? <a href="login.html">Inicia sesión</a>
-    </div>
-
+    <p style="margin-top:10px;">
+      ¿Ya tienes cuenta?
+      <a style="color:#4da6ff; cursor:pointer;" onclick="window.location.href='login.html'">Inicia sesión</a>
+    </p>
   </div>
+
+<script>
+  function sanitize(text) {
+    return text.replace(/[<>"'\/]/g, "");
+  }
+
+  function register() {
+    const email = sanitize(document.getElementById("email").value.trim());
+    const pass = sanitize(document.getElementById("password").value.trim());
+    const pass2 = sanitize(document.getElementById("password2").value.trim());
+    const msg = document.getElementById("msg");
+
+    msg.innerText = "";
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      msg.innerText = "Correo inválido.";
+      return;
+    }
+
+    const passRegex = /^(?=.*[A-Z])(?=.*[0-9]).{6,}$/;
+    if (!passRegex.test(pass)) {
+      msg.innerText = "La contraseña debe tener 6 caracteres, 1 mayúscula y 1 número.";
+      return;
+    }
+
+    if (pass !== pass2) {
+      msg.innerText = "Las contraseñas no coinciden.";
+      return;
+    }
+
+    const user = { email, password: pass };
+
+    // Guardar usuario
+    localStorage.setItem("user", JSON.stringify(user));
+
+    msg.style.color = "#00ff88";
+    msg.innerText = "Registrado correctamente.";
+
+    setTimeout(() => {
+      window.location.href = "login.html";
+    }, 1000);
+  }
+</script>
 
 </body>
 </html>
