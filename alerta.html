@@ -18,7 +18,7 @@ body {
 /* ------------------- MENÚ SUPERIOR ------------------- */
 .navbar {
     width: 100%;
-    background: #26315E;
+    background: #050b1a;
     padding: 18px 40px;
     display: flex;
     justify-content: flex-start;
@@ -64,18 +64,41 @@ h1 {
     text-shadow: 0 0 12px #4d7bff;
 }
 
-/* RECUADRO LED */
-.recuadro {
-    width: 70%;
-    margin: 40px auto;
-    padding: 25px;
-    background: rgb(62, 84, 227);
-    border-radius: 20px;
-    
-    text-align: center;
+/* TABLA DE COLORES */
+.tabla-colores {
+  width: 100%;
+  max-width: 800px;
+  margin: 20px auto;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
 }
 
-/* BOTÓN ROJO CIRCULAR */
+.tabla-colores th {
+  background: #4F63C9;
+  color: white;
+  padding: 10px;
+  text-align: left;
+}
+
+.tabla-colores td {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: left;
+}
+
+.color {
+  width: 40px;
+  height: 20px;
+  border-radius: 5px;
+}
+
+.color-verbal { background: #F7C65A; }
+.color-fisico { background: #E65555; }
+.color-social { background: #6AAAE6; }
+.color-cyber  { background: #A55AE6; }
+.color-grave  { background: #B71C1C; }
+
+/* BOTÓN CIRCULAR */
 .boton-alerta {
     width: 150px;
     height: 150px;
@@ -86,7 +109,6 @@ h1 {
     font-size: 22px;
     font-weight: bold;
     cursor: pointer;
-    
     display: block;
     margin: 40px auto;
     transition: .3s;
@@ -136,13 +158,18 @@ label {
     margin-top: 12px;
 }
 
-input {
+input, textarea, select {
     width: 100%;
     padding: 10px;
     margin-top: 7px;
     border-radius: 10px;
     border: none;
     font-size: 14px;
+}
+
+textarea {
+    height: 90px;
+    resize: none;
 }
 
 .btn-enviar {
@@ -162,62 +189,22 @@ input {
     background: rgb(90,130,255);
 }
 
-.cerrar {
-    margin-top: 15px;
-    text-align: center;
-    cursor: pointer;
-    color: #ff4d4d;
+/* BOTÓN CERRAR */
+.btn-cerrar {
+    width: 100%;
+    padding: 10px;
+    background: #ff4d4d;
+    color: white;
     font-size: 17px;
-}
-.tabla-colores {
-  width: 100%;
-  max-width: 800px;
-  margin: 20px auto;
-  border-collapse: collapse;
-  font-family: Arial, sans-serif;
+    border: none;
+    border-radius: 10px;
+    margin-top: 15px;
+    cursor: pointer;
 }
 
-.tabla-colores th {
-  background: #4F63C9;
-  color: white;
-  padding: 10px;
-  text-align: left;
+.btn-cerrar:hover {
+    background: #e60000;
 }
-
-.tabla-colores td {
-  border: 1px solid #ccc;
-  padding: 10px;
-  text-align: left;
-}
-
-.color {
-  width: 40px;
-  height: 20px;
-  border-radius: 5px;
-}
-
-/* Colores del bullying */
-.color-verbal {
-  background: #F7C65A; /* Amarillo */
-}
-
-.color-fisico {
-  background: #E65555; /* Rojo claro */
-}
-
-.color-social {
-  background: #6AAAE6; /* Azul social */
-}
-
-.color-cyber {
-  background: #A55AE6; /* Morado */
-}
-
-.color-grave {
-  background: #B71C1C; /* Rojo fuerte */
-}
-
-
 </style>
 
 </head>
@@ -228,20 +215,17 @@ input {
     <div class="logo">SafeSchool</div>
 
     <ul class="nav-links">
-          <li><a href="index.html" class="btn-login">Iniciar sesión</a></li>
-         <li><a href="register.html" class="btn-login">Registrarse</a></li> 
-        <li><a href="login.html">Inicio</a></li>
-        <li><a href="alerta.html">Alerta</a></li>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="alerta.html" class="activo">Alerta</a></li>
         <li><a href="informacion sobre el bulling.html">Información</a></li>
         <li><a href="contacto.html">Contacto</a></li>
-       
     </ul>
 </nav>
 
 <!-- TÍTULO -->
 <h1>Alerta de Bullying</h1>
 
-<!-- RECUADRO INICIAL -->
+<!-- TABLA -->
 <table class="tabla-colores">
   <tr>
     <th>Tipo</th>
@@ -288,39 +272,41 @@ input {
     <div class="modal-contenido">
         <h2>Reporte de Bullying</h2>
 
-      <form action="https://formspree.io/f/xrbnlzko" method="POST">
+        <form action="https://formspree.io/f/xrbnlzko" method="POST">
 
-  <label>Selecciona el correo de la maestra:</label>
-<select name="correo" required>
-  <option value="">-- Selecciona una maestra --</option>
-  <option value="gretteltorres.alp@cbtis258.edu.mx">Profa. Grettel Torres</option>
-  <option value="maestra1@cbtis258.edu.mx">Profa. Adriana López</option>
-  <option value="maestra2@cbtis258.edu.mx">Profa. Karina Méndez</option>
-  <option value="maestra3@cbtis258.edu.mx">Profa. Marisol Reyes</option>
-  <option value="maestra4@cbtis258.edu.mx">Profa. Verónica García</option>
-</select>
+            <label>Selecciona el correo de la maestra:</label>
+            <select name="correo" required>
+                <option value="">-- Selecciona una maestra --</option>
+                <option value="gretteltorres.alp@cbtis258.edu.mx">Profa. Grettel Torres</option>
+                <option value="adriana.lopez@cbtis258.edu.mx">Profa. Adriana López</option>
+                <option value="karina.mendez@cbtis258.edu.mx">Profa. Karina Méndez</option>
+                <option value="marisol.reyes@cbtis258.edu.mx">Profa. Marisol Reyes</option>
+                <option value="veronica.garcia@cbtis258.edu.mx">Profa. Verónica García</option>
+            </select>
 
-  <label>Carrera:</label>
-  <input type="text" name="carrera" placeholder="Escribe tu carrera" required>
+            <label>Carrera:</label>
+            <input type="text" name="carrera" placeholder="Escribe tu carrera" required>
 
-  <label>Grupo:</label>
-  <input type="text" name="grupo" placeholder="Escribe tu grupo" required>
+            <label>Grupo:</label>
+            <input type="text" name="grupo" placeholder="Escribe tu grupo" required>
 
-  <label>Aula:</label>
-  <input type="text" name="aula" placeholder="Escribe tu aula" required>
+            <label>Aula:</label>
+            <input type="text" name="aula" placeholder="Escribe tu aula" required>
 
-  <label>Tu nombre (opcional):</label>
-  <input type="text" name="nombre" placeholder="Tu nombre">
+            <label>Tu nombre (opcional):</label>
+            <input type="text" name="nombre" placeholder="Tu nombre">
 
-  <label>Persona que te molesta:</label>
-  <input type="text" name="agresor" placeholder="Nombre de la persona" required>
+            <label>Persona que te molesta:</label>
+            <input type="text" name="agresor" placeholder="Nombre de la persona" required>
 
-  <label>Mensaje (opcional):</label>
-  <textarea name="mensaje" placeholder="Describe lo que pasó"></textarea>
+            <label>Mensaje (opcional):</label>
+            <textarea name="mensaje" placeholder="Describe lo que pasó"></textarea>
 
-  <button type="submit">Enviar</button>
-</form>
+            <button type="submit" class="btn-enviar">Enviar</button>
+        </form>
 
+        <!-- BOTÓN CERRAR -->
+        <button class="btn-cerrar" onclick="cerrarModal()">Cerrar</button>
 
     </div>
 </div>
@@ -332,11 +318,6 @@ function abrirModal() {
 function cerrarModal() {
     document.getElementById("modalFondo").style.display = "none";
 }
-function enviar() {
-    alert("Tu reporte fue enviado. ¡Eres fuerte y valiente!");
-    cerrarModal();
-}
-
 </script>
 
 </body>
